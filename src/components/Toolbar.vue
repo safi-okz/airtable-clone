@@ -218,7 +218,7 @@ function toggleDrawer() {
               <span class="bg-gray-900 text-white text-xs px-1.5 py-0.5 rounded font-medium">1</span>
         </Button>
           </PopoverTrigger>
-          <PopoverContent class="w-64 p-4">
+          <PopoverContent class="w-68 p-4">
             <div class="space-y-3">
               <h3 class="font-medium text-sm">Sort by</h3>
               <Select v-model="sortField">
