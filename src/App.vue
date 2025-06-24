@@ -3,7 +3,15 @@
     <!-- Top Navigation Bar -->
     <TopNav v-model="activeTab" />
     <!-- Conditional Secondary Toolbar or Interfaces Nav -->
-    <Toolbar v-if="activeTab !== 'Interfaces'" />
+    <Toolbar 
+      v-if="activeTab !== 'Interfaces'" 
+      @update-search="handleSearch"
+      @add-record="handleAddRecord"
+      @apply-filter="handleFilter"
+      @apply-sort="handleSort"
+      @apply-group="handleGroup"
+      @toggle-drawer="handleToggleDrawer"
+    />
     <InterfacesNav v-else />
     <div class="flex flex-1 overflow-hidden">
       <!-- Conditional Sidebar -->
@@ -11,7 +19,11 @@
       <InterfacesSidebar v-else @open-name-dialog="openNameDialog" />
       <!-- Main Content -->
       <div class="flex-1 flex flex-col overflow-hidden">
-        <DataGrid v-if="activeTab !== 'Interfaces'" class="flex-1" />
+        <DataGrid 
+          v-if="activeTab !== 'Interfaces'" 
+          ref="dataGridRef"
+          class="flex-1" 
+        />
         <InterfacesMain v-else class="flex-1" />
         <BottomBar v-if="activeTab !== 'Interfaces'" />
       </div>
@@ -37,10 +49,11 @@ import NameInterfaceDialog from './components/NameInterfaceDialog.vue'
 import ChooseLayoutDialog from './components/ChooseLayoutDialog.vue'
 import ConnectToTableDialog from './components/ConnectToTableDialog.vue'
 
-const activeTab = ref('Interfaces')
+const activeTab = ref('Data')
 const isNameInterfaceDialogOpen = ref(false)
 const isChooseLayoutDialogOpen = ref(false)
 const isConnectToTableDialogOpen = ref(false)
+const dataGridRef = ref()
 
 function openNameDialog() {
   isNameInterfaceDialogOpen.value = true
@@ -59,6 +72,43 @@ function openConnectToTableDialog() {
 function backToChooseLayoutDialog() {
   isConnectToTableDialogOpen.value = false
   isChooseLayoutDialogOpen.value = true
+}
+
+// DataGrid handler functions
+function handleSearch(query: string) {
+  if (dataGridRef.value) {
+    dataGridRef.value.handleSearch(query)
+  }
+}
+
+function handleAddRecord() {
+  if (dataGridRef.value) {
+    dataGridRef.value.addRecord()
+  }
+}
+
+function handleFilter(filters: any) {
+  if (dataGridRef.value) {
+    dataGridRef.value.handleFilter(filters)
+  }
+}
+
+function handleSort(field: string, order: 'asc' | 'desc') {
+  if (dataGridRef.value) {
+    dataGridRef.value.handleSort(field, order)
+  }
+}
+
+function handleGroup(field: string) {
+  if (dataGridRef.value) {
+    dataGridRef.value.handleGroup(field)
+  }
+}
+
+function handleToggleDrawer() {
+  if (dataGridRef.value) {
+    dataGridRef.value.toggleSideDrawer()
+  }
 }
 </script>
 
