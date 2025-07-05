@@ -223,7 +223,7 @@ function getColumnClass(field: Field) {
   }
 }
 
-function getCellClass(field: Field) {
+function getCellClass(_field: Field) {
   const baseClass = 'px-3'
   const heightClass = getRowHeightClass()
   

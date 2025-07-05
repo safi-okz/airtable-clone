@@ -647,18 +647,22 @@ function saveField(recordId: number, field: string, value: any) {
   editingCell.value = ''
 }
 
-function updateAssignee(recordId: number, value: string) {
-  const assigneeMap: { [key: string]: { name: string } } = {
-    'shoaib-rehman': { name: 'Shoaib Rehman' },
-    'john-doe': { name: 'John Doe' },
-    'jane-smith': { name: 'Jane Smith' }
+function updateAssignee(recordId: number, value: string | number | null) {
+  if (typeof value === 'string') {
+    const assigneeMap: { [key: string]: { name: string } } = {
+      'shoaib-rehman': { name: 'Shoaib Rehman' },
+      'john-doe': { name: 'John Doe' },
+      'jane-smith': { name: 'Jane Smith' }
+    }
+    
+    emit('update-record', recordId, { assignee: assigneeMap[value] })
   }
-  
-  emit('update-record', recordId, { assignee: assigneeMap[value] })
 }
 
-function updateStatus(recordId: number, value: string) {
-  emit('update-record', recordId, { status: value })
+function updateStatus(recordId: number, value: string | number | null) {
+  if (typeof value === 'string') {
+    emit('update-record', recordId, { status: value })
+  }
 }
 
 

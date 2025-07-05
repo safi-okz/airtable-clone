@@ -232,8 +232,8 @@ function saveUserChanges() {
   isEditing.value = false
 }
 
-function updateAssignee(value: string | null) {
-  if (value) {
+function updateAssignee(value: string | number | null) {
+  if (typeof value === 'string') {
     const assigneeMap: { [key: string]: { name: string } } = {
       'shoaib-rehman': { name: 'Shoaib Rehman' },
       'john-doe': { name: 'John Doe' },
@@ -244,8 +244,8 @@ function updateAssignee(value: string | null) {
   }
 }
 
-function updateStatus(value: string | null) {
-  if (value) {
+function updateStatus(value: string | number | null) {
+  if (typeof value === 'string') {
     emit('update', { status: value })
   }
 }
