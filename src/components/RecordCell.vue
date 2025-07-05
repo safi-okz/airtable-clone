@@ -164,6 +164,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from './ui/select'
+import type { AcceptableValue } from 'reka-ui'
 
 interface Record {
   id: number
@@ -232,7 +233,7 @@ function saveUserChanges() {
   isEditing.value = false
 }
 
-function updateAssignee(value: string | number | null) {
+function updateAssignee(value: AcceptableValue) {
   if (typeof value === 'string') {
     const assigneeMap: { [key: string]: { name: string } } = {
       'shoaib-rehman': { name: 'Shoaib Rehman' },
@@ -244,7 +245,7 @@ function updateAssignee(value: string | number | null) {
   }
 }
 
-function updateStatus(value: string | number | null) {
+function updateStatus(value: AcceptableValue) {
   if (typeof value === 'string') {
     emit('update', { status: value })
   }

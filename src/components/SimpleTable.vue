@@ -466,6 +466,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from './ui/dialog'
+import type { AcceptableValue } from 'reka-ui'
 
 interface Attachment {
   name: string
@@ -647,7 +648,7 @@ function saveField(recordId: number, field: string, value: any) {
   editingCell.value = ''
 }
 
-function updateAssignee(recordId: number, value: string | number | null) {
+function updateAssignee(recordId: number, value: AcceptableValue) {
   if (typeof value === 'string') {
     const assigneeMap: { [key: string]: { name: string } } = {
       'shoaib-rehman': { name: 'Shoaib Rehman' },
@@ -659,7 +660,7 @@ function updateAssignee(recordId: number, value: string | number | null) {
   }
 }
 
-function updateStatus(recordId: number, value: string | number | null) {
+function updateStatus(recordId: number, value: AcceptableValue) {
   if (typeof value === 'string') {
     emit('update-record', recordId, { status: value })
   }
