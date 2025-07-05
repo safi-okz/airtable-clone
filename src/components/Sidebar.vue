@@ -1,39 +1,34 @@
-<script lang="ts" setup>
-import { Button } from './ui/button'
-</script>
-
 <template>
-  <div class="w-64 bg-gray-50 border-r border-gray-200 p-3 space-y-5">
-    <div>
-      <h3 class="px-3 text-xs text-gray-500 font-semibold uppercase tracking-wider mb-2">Tables</h3>
-      <Button variant="ghost" class="w-full justify-start h-9 px-3 bg-airtable-blue-selected text-airtable-blue-text font-semibold hover:bg-blue-100 transition-colors">
-        <span class="material-icons-outlined text-base mr-2">table_rows</span>
-        Students
-      </Button>
-      <Button variant="ghost" class="w-full justify-start h-9 px-3 text-gray-700 hover:bg-gray-100 transition-colors">
-        <span class="material-icons-outlined text-base mr-2">table_rows</span>
-        Teachers
-      </Button>
-       <Button variant="ghost" class="w-full justify-start h-9 px-3 text-gray-700 hover:bg-gray-100 transition-colors">
-        <span class="material-icons-outlined text-base mr-2">table_rows</span>
-        Classes
-      </Button>
+  <aside class="w-64 bg-white border-r border-gray-200 flex flex-col h-full">
+    <div class="p-4 border-b border-gray-100">
+      <div class="font-semibold text-gray-700 mb-2">Views</div>
+      <div class="flex flex-col gap-1">
+        <Button variant="secondary" class="justify-start"><span class="material-icons text-base mr-2">table_chart</span> Grid view</Button>
+      </div>
     </div>
-    <div>
-      <h3 class="px-3 text-xs text-gray-500 font-semibold uppercase tracking-wider mb-2">Interface Groups</h3>
-      <Button variant="ghost" class="w-full justify-start h-9 px-3 text-gray-700 hover:bg-gray-100 transition-colors">
-        <span class="material-icons-outlined text-base mr-2">folder</span>
-        Group 1
-      </Button>
-    </div>
-    <div class="pt-2 border-t border-gray-200">
-      <Button variant="ghost" class="w-full justify-start h-9 px-3 text-gray-500 font-normal hover:bg-gray-100 transition-colors">
-        <span class="material-icons text-lg mr-2">add</span>
-        Add or import
-      </Button>
-    </div>
-  </div>
+    <ScrollArea class="flex-1 p-4">
+      <div class="text-xs text-gray-500 mb-2">Create...</div>
+      <div class="flex flex-col gap-1">
+        <Button variant="ghost" class="justify-start"><span class="material-icons text-base mr-2">table_chart</span> Grid</Button>
+        <Button variant="ghost" class="justify-start"><span class="material-icons text-base mr-2">calendar_today</span> Calendar</Button>
+        <Button variant="ghost" class="justify-start"><span class="material-icons text-base mr-2">photo_library</span> Gallery</Button>
+        <Button variant="ghost" class="justify-start"><span class="material-icons text-base mr-2">view_kanban</span> Kanban</Button>
+        <Button variant="ghost" class="justify-start"><span class="material-icons text-base mr-2">timeline</span> Timeline <span class="ml-auto text-xs bg-gray-200 rounded px-1">Team</span></Button>
+        <Button variant="ghost" class="justify-start"><span class="material-icons text-base mr-2">list</span> List</Button>
+        <Button variant="ghost" class="justify-start"><span class="material-icons text-base mr-2">gantt_chart</span> Gantt <span class="ml-auto text-xs bg-gray-200 rounded px-1">Team</span></Button>
+        <Button variant="ghost" class="justify-start"><span class="material-icons text-base mr-2">add</span> New section <span class="ml-auto text-xs bg-gray-200 rounded px-1">Team</span></Button>
+      </div>
+      <div class="mt-4">
+        <Button variant="ghost" class="justify-start text-purple-700 hover:text-purple-700"><span class="material-icons text-base mr-2">description</span> Form</Button>
+      </div>
+    </ScrollArea>
+  </aside>
 </template>
+
+<script lang="ts" setup>
+import { Button } from '@/components/ui/button'
+import { ScrollArea } from '@/components/ui/scroll-area'
+</script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
