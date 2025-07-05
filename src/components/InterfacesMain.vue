@@ -58,7 +58,6 @@
 
 <script lang="ts" setup>
 import { Button } from './ui/button'
-import { Input } from './ui/input'
 import {
   Table,
   TableBody,

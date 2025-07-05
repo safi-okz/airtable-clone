@@ -79,7 +79,7 @@ defineEmits(['update:open', 'back'])
               </TableRow>
             </TableHeader>
             <TableBody>
-              <TableRow v-for="(row, index) in rows" :key="index" class="border-b border-gray-100 last:border-b-0">
+              <TableRow v-for="(_, index) in rows" :key="index" class="border-b border-gray-100 last:border-b-0">
                 <TableCell class="py-2 text-gray-500">Blank...</TableCell>
                 <TableCell class="py-2 text-gray-500">-</TableCell>
                 <TableCell class="py-2 text-gray-500">-</TableCell>

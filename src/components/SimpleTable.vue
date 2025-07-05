@@ -134,7 +134,7 @@
               </Button>
             </div>
             <!-- Select dropdown only when editing is enabled and no assignee -->
-            <Select v-else-if="editRecordsInline" @update:model-value="(value) => updateAssignee(record.id, value as string)">
+            <Select v-else-if="editRecordsInline" @update:model-value="(value) => updateAssignee(record.id, value)">
               <SelectTrigger class="h-8 text-sm border-none bg-transparent hover:bg-gray-50 focus:ring-2 focus:ring-blue-500">
                 <SelectValue placeholder="Select assignee..." />
               </SelectTrigger>
@@ -190,7 +190,7 @@
               </Button>
             </div>
             <!-- Select dropdown only when editing is enabled and no status -->
-            <Select v-else-if="editRecordsInline" @update:model-value="(value) => updateStatus(record.id, value as string)">
+            <Select v-else-if="editRecordsInline" @update:model-value="(value) => updateStatus(record.id, value)">
               <SelectTrigger class="h-8 text-sm border-none bg-transparent hover:bg-gray-50 focus:ring-2 focus:ring-blue-500">
                 <SelectValue placeholder="Select status..." />
               </SelectTrigger>
@@ -569,7 +569,7 @@ function getColumnClass(field: Field) {
   }
 }
 
-function getCellClass(field: Field) {
+function getCellClass(_field: Field) {
   const baseClass = 'px-3'
   const heightClass = getRowHeightClass()
   

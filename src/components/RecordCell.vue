@@ -154,7 +154,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, watch } from 'vue'
 import { Avatar, AvatarFallback } from './ui/avatar'
 import { Button } from './ui/button'
 import {
@@ -232,18 +232,22 @@ function saveUserChanges() {
   isEditing.value = false
 }
 
-function updateAssignee(value: string) {
-  const assigneeMap: Record<string, { name: string }> = {
-    'shoaib-rehman': { name: 'Shoaib Rehman' },
-    'john-doe': { name: 'John Doe' },
-    'jane-smith': { name: 'Jane Smith' }
+function updateAssignee(value: string | null) {
+  if (value) {
+    const assigneeMap: { [key: string]: { name: string } } = {
+      'shoaib-rehman': { name: 'Shoaib Rehman' },
+      'john-doe': { name: 'John Doe' },
+      'jane-smith': { name: 'Jane Smith' }
+    }
+    
+    emit('update', { assignee: assigneeMap[value] })
   }
-  
-  emit('update', { assignee: assigneeMap[value] })
 }
 
-function updateStatus(value: string) {
-  emit('update', { status: value })
+function updateStatus(value: string | null) {
+  if (value) {
+    emit('update', { status: value })
+  }
 }
 
 function addAttachment() {
